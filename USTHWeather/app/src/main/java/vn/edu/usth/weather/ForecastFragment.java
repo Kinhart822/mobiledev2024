@@ -1,5 +1,7 @@
 package vn.edu.usth.weather;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,12 +63,41 @@ public class ForecastFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_forecast, container, false);
+        // Practical 3
+//        // Inflate the layout for this fragment
+//        View view = inflater.inflate(R.layout.fragment_forecast, container, false);
+//
+//        // Bạn có thể thay đổi màu ở đây
+//        view.setBackgroundColor(0x20FF0000); // Red
+//
+//        return view;
 
-        // Bạn có thể thay đổi màu ở đây
-        view.setBackgroundColor(0x20FF0000); // Red - chú ý là phải để số 0 ở đầu để lúc gọi findViewById ms tìm được
+        // Create a new LinearLayout
+        LinearLayout layout = new LinearLayout(getActivity());
+        layout.setOrientation(LinearLayout.VERTICAL);
 
-        return view;
+        // Create a new TextView
+        TextView dayTextView = new TextView(getActivity());
+        dayTextView.setText("Thursday");
+        dayTextView.setTextColor(Color.BLACK);
+        dayTextView.setTextSize(24);
+        dayTextView.setPadding(16, 100, 16, 16);
+
+        // Create a new ImageView
+        ImageView weatherImageView = new ImageView(getActivity());
+        weatherImageView.setImageResource(R.drawable.cloudy);
+        weatherImageView.setPadding(16, 16, 16, 16);
+
+        // Add TextView and ImageView to LinearLayout
+        layout.addView(dayTextView);
+        layout.addView(weatherImageView);
+
+        // Set layout parameters for LinearLayout
+        layout.setLayoutParams(new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));
+
+        // Return the layout as the view for this fragment
+        return layout;
     }
 }
