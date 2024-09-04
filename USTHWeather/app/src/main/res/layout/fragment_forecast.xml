@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".ForecastFragment">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="20dp">
@@ -366,5 +366,5 @@
                     android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 </FrameLayout>
