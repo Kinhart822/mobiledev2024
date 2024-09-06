@@ -24,14 +24,14 @@ public class WeatherActivity extends AppCompatActivity {
         binding = ActivityWeatherBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Tạo một instance của ForecastFragment
-        ForecastFragment forecastFragment = new ForecastFragment();
-
-        // Thêm Fragment vào Activity
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .add(R.id.container, forecastFragment)  // R.id.container là id của FrameLayout trong layout activity_weather
-                .commit();
+//        // Tạo một instance của ForecastFragment
+//        ForecastFragment forecastFragment = new ForecastFragment();
+//
+//        // Thêm Fragment vào Activity
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        fragmentManager.beginTransaction()
+//                .add(R.id.container, forecastFragment)
+//                .commit();
     }
 
     @Override
