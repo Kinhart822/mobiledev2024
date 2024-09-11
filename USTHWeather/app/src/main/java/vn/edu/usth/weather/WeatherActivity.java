@@ -2,11 +2,10 @@ package vn.edu.usth.weather;
 
 import android.os.Bundle;
 import android.util.Log;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 
 import vn.edu.usth.weather.databinding.ActivityWeatherBinding;
 
@@ -18,20 +17,21 @@ public class WeatherActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
 
         // Initialize ViewBinding
         binding = ActivityWeatherBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-//        // Tạo một instance của ForecastFragment
-//        ForecastFragment forecastFragment = new ForecastFragment();
-//
-//        // Thêm Fragment vào Activity
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        fragmentManager.beginTransaction()
-//                .add(R.id.container, forecastFragment)
-//                .commit();
+        // Set up ViewPager and TabLayout
+        ViewPager viewPager = binding.viewPager;
+        TabLayout tabLayout = binding.tabLayout;
+
+        // Create the adapter and set it to the ViewPager
+        WeatherAndForecastPagerAdapter adapter = new WeatherAndForecastPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
+
+        // Link the TabLayout with the ViewPager
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     @Override

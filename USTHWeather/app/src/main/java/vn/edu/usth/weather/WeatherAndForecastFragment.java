@@ -1,24 +1,21 @@
 package vn.edu.usth.weather;
 
-import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ForecastFragment#newInstance} factory method to
+ * Use the {@link WeatherAndForecastFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ForecastFragment extends Fragment {
+public class WeatherAndForecastFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,7 +26,7 @@ public class ForecastFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ForecastFragment() {
+    public WeatherAndForecastFragment() {
         // Required empty public constructor
     }
 
@@ -39,11 +36,11 @@ public class ForecastFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ForecastFragment.
+     * @return A new instance of fragment WeatherAndForecastFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ForecastFragment newInstance(String param1, String param2) {
-        ForecastFragment fragment = new ForecastFragment();
+    public static WeatherAndForecastFragment newInstance(String param1, String param2) {
+        WeatherAndForecastFragment fragment = new WeatherAndForecastFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,13 +57,22 @@ public class ForecastFragment extends Fragment {
         }
     }
 
+    public static WeatherAndForecastFragment newInstance() {
+        return new WeatherAndForecastFragment();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_weather_and_forecast, container, false);
 
-        View view = inflater.inflate(R.layout.fragment_forecast, container, false);
-
-        view.setBackgroundColor(Color.parseColor("#E3D7F7"));
+        // Practical Work 7
+            // Add WeatherFragment and ForecastFragment
+        FragmentManager fm = getChildFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        transaction.replace(R.id.weather_container, new WeatherFragment());
+        transaction.replace(R.id.forecast_container, new ForecastFragment());
+        transaction.commit();
 
         return view;
     }

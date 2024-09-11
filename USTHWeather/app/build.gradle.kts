@@ -45,6 +45,8 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
+    implementation("com.google.android.material:material:1.9.0") // This includes TabLayout and other Material components
+
     // Thư viện Fragment
     implementation("androidx.fragment:fragment-ktx:1.6.0")
 
