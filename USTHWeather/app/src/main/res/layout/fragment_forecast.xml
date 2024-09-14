@@ -8,37 +8,36 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="20dp"
-        tools:ignore="UselessParent">
+        android:paddingTop="@dimen/padding_large">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="@dimen/padding_item">
 
             <!-- Monday -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="8dp">
+                android:paddingBottom="@dimen/padding_default">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="Mon"
+                    android:padding="@dimen/padding_default"
+                    android:text="@string/mon"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="53dp"
                     android:layout_weight="2"
-                    android:padding="8dp"
+                    android:padding="@dimen/padding_default"
                     android:src="@drawable/cloudy1" />
 
                 <TextView
@@ -46,10 +45,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="left"
-                    android:padding="8dp"
-                    android:text="Partly Cloudy\n24C - 31C"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:padding="@dimen/padding_default"
+                    android:text="@string/partly_cloudy_n24c_31c"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
             </LinearLayout>
 
             <!-- Tuesday -->
@@ -57,23 +56,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="8dp">
+                android:paddingBottom="@dimen/padding_default">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="Tue"
+                    android:padding="@dimen/padding_default"
+                    android:text="@string/tue"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="53dp"
                     android:layout_weight="2"
-                    android:padding="8dp"
+                    android:padding="@dimen/padding_default"
                     android:src="@drawable/showers" />
 
                 <TextView
@@ -81,10 +80,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="left"
-                    android:padding="8dp"
-                    android:text="Showers\n24C - 30C"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:padding="@dimen/padding_default"
+                    android:text="@string/showers_n24c_30c"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
             </LinearLayout>
 
             <!-- Wednesday -->
@@ -92,23 +91,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="8dp">
+                android:paddingBottom="@dimen/padding_default">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="Wed"
+                    android:padding="@dimen/padding_default"
+                    android:text="@string/wed"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="53dp"
                     android:layout_weight="2"
-                    android:padding="8dp"
+                    android:padding="@dimen/padding_default"
                     android:src="@drawable/showers" />
 
                 <TextView
@@ -116,10 +115,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="left"
-                    android:padding="8dp"
-                    android:text="Rain\n22C - 23C"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:padding="@dimen/padding_default"
+                    android:text="@string/rain_n22c_23c"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
             </LinearLayout>
 
             <!-- Thursday -->
@@ -127,23 +126,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="8dp">
+                android:paddingBottom="@dimen/padding_default">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="Thu"
+                    android:padding="@dimen/padding_default"
+                    android:text="@string/thu"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="53dp"
                     android:layout_weight="2"
-                    android:padding="8dp"
+                    android:padding="@dimen/padding_default"
                     android:src="@drawable/scattered_showers" />
 
                 <TextView
@@ -151,10 +150,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="left"
-                    android:padding="8dp"
-                    android:text="Scattered Showers\n22C - 27C"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:padding="@dimen/padding_default"
+                    android:text="@string/scattered_showers_n22c_27c"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
             </LinearLayout>
 
             <!-- Friday -->
@@ -162,23 +161,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="8dp">
+                android:paddingBottom="@dimen/padding_default">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="Fri"
+                    android:padding="@dimen/padding_default"
+                    android:text="@string/fri"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="53dp"
                     android:layout_weight="2"
-                    android:padding="8dp"
+                    android:padding="@dimen/padding_default"
                     android:src="@drawable/mostly_cloudy" />
 
                 <TextView
@@ -186,10 +185,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="left"
-                    android:padding="8dp"
-                    android:text="Mostly Cloudy\n22C - 30C"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:padding="@dimen/padding_default"
+                    android:text="@string/mostly_cloudy_n22c_30c"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
             </LinearLayout>
 
             <!-- Saturday -->
@@ -197,23 +196,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="8dp">
+                android:paddingBottom="@dimen/padding_default">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="Sat"
+                    android:padding="@dimen/padding_default"
+                    android:text="@string/sat"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="53dp"
                     android:layout_weight="2"
-                    android:padding="8dp"
+                    android:padding="@dimen/padding_default"
                     android:src="@drawable/mostly_cloudy" />
 
                 <TextView
@@ -221,10 +220,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="left"
-                    android:padding="8dp"
-                    android:text="Partly Cloudy\n24C - 31C"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:padding="@dimen/padding_default"
+                    android:text="@string/partly_cloudy_n24c_31c"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
             </LinearLayout>
 
             <!-- Sunday -->
@@ -232,23 +231,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="8dp">
+                android:paddingBottom="@dimen/padding_default">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="Sun"
+                    android:padding="@dimen/padding_default"
+                    android:text="@string/sun"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="53dp"
                     android:layout_weight="2"
-                    android:padding="8dp"
+                    android:padding="@dimen/padding_default"
                     android:src="@drawable/thunderstorms" />
 
                 <TextView
@@ -256,34 +255,34 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="left"
-                    android:padding="8dp"
-                    android:text="Thunderstorms\n25C - 28C"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:padding="@dimen/padding_default"
+                    android:text="@string/thunderstorms_n25c_28c"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
             </LinearLayout>
 
-            <!-- Monday -->
+            <!-- Monday (Next Week) -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="8dp">
+                android:paddingBottom="@dimen/padding_default">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="Mon"
+                    android:padding="@dimen/padding_default"
+                    android:text="@string/mon"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="53dp"
                     android:layout_weight="2"
-                    android:padding="8dp"
+                    android:padding="@dimen/padding_default"
                     android:src="@drawable/scattered_thunderstorms" />
 
                 <TextView
@@ -291,34 +290,34 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="left"
-                    android:padding="8dp"
-                    android:text="Scattered Thunderstorms\n24C - 27C"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:padding="@dimen/padding_default"
+                    android:text="@string/scattered_thunderstorms_n24c_27c"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
             </LinearLayout>
 
-            <!-- Tuesday -->
+            <!-- Tuesday (Next Week) -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="8dp">
+                android:paddingBottom="@dimen/padding_default">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="Tue"
+                    android:padding="@dimen/padding_default"
+                    android:text="@string/tue"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="53dp"
                     android:layout_weight="2"
-                    android:padding="8dp"
+                    android:padding="@dimen/padding_default"
                     android:src="@drawable/showers" />
 
                 <TextView
@@ -326,34 +325,34 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="left"
-                    android:padding="8dp"
-                    android:text="Showers\n24C - 26C"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:padding="@dimen/padding_default"
+                    android:text="@string/showers_n24c_26c"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
             </LinearLayout>
 
-            <!-- Wednesday -->
+            <!-- Wednesday (Next Week) -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="8dp">
+                android:paddingBottom="0dp">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="Wed"
+                    android:padding="@dimen/padding_default"
+                    android:text="@string/wed"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="53dp"
                     android:layout_weight="2"
-                    android:padding="8dp"
+                    android:padding="@dimen/padding_default"
                     android:src="@drawable/showers" />
 
                 <TextView
@@ -361,10 +360,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="left"
-                    android:padding="8dp"
-                    android:text="Showers\n23C - 25C"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:padding="@dimen/padding_default"
+                    android:text="@string/showers_n23c_25c"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

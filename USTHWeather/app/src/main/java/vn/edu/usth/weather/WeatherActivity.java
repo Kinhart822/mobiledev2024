@@ -18,6 +18,9 @@ public class WeatherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Set locale to Vietnamese
+        LocaleHelper.setLocale(this, "vi");
+
         // Initialize ViewBinding
         binding = ActivityWeatherBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

@@ -1,0 +1,11 @@
+<resources>
+    <!-- Margins and Paddings -->
+    <dimen name="padding_default">8dp</dimen>
+    <dimen name="padding_large">40dp</dimen>
+    <dimen name="padding_item">16dp</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="text_size_small">13sp</dimen>
+    <dimen name="text_size_medium">20sp</dimen>
+    <dimen name="text_size_large">25sp</dimen>
+</resources>

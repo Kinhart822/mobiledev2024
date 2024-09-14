@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 public class WeatherAndForecastPagerAdapter extends FragmentPagerAdapter {
 
-    private final String[] titles = new String[] { "Today", "Tomorrow", "Weekly" };
+    private final String[] titles = new String[] { "Hà Nội", "Hồ Chí Minh", "Nam Định" };
 
     public WeatherAndForecastPagerAdapter(FragmentManager fm) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
