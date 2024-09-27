@@ -20,4 +20,7 @@
     <string name="scattered_thunderstorms_n24c_27c">Scattered Thunderstorms\n24C - 27C</string>
     <string name="showers_n24c_26c">Showers\n24C - 26C</string>
     <string name="showers_n23c_25c">Showers\n23C - 25C</string>
+    <string name="settings" translatable="false">Settings</string>
+    <string name="refresh" translatable="false">Refresh</string>
+    <string name="welcome_to_PrefActivity" translatable="false">Welcome to PrefActivity</string>
 </resources>

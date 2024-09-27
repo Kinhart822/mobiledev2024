@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace = "vn.edu.usth.weather"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "vn.edu.usth.weather"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -30,9 +30,13 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
+    dependenciesInfo {
+        includeInApk = true
+    }
+    buildToolsVersion = "35.0.0"
 }
 
 dependencies {
@@ -45,9 +49,9 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    implementation("com.google.android.material:material:1.9.0") // This includes TabLayout and other Material components
+    implementation(libs.material.v190) // This includes TabLayout and other Material components
 
     // Thư viện Fragment
-    implementation("androidx.fragment:fragment-ktx:1.6.0")
+    implementation(libs.fragment.ktx)
 
 }
