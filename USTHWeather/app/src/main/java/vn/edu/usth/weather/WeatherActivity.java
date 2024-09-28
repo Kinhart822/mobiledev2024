@@ -3,7 +3,11 @@ package vn.edu.usth.weather;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -138,18 +142,85 @@ public class WeatherActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_refresh:
-                // Show a toast when the refresh action is clicked
-                Toast.makeText(this, "Refreshing...", Toast.LENGTH_SHORT).show();
-                return true;
+                    // Show a toast when the refresh action is clicked
+    //         Toast.makeText(this, "Refreshing...", Toast.LENGTH_SHORT).show();
 
+                    // Simulate a network request using a thread and handler
+    //            simulateNetworkRequest();
+
+                    // Execute the AsyncTask
+                new SimulateNetworkTask().execute();
+                return true;
             case R.id.action_settings:
-                // Start PrefActivity when the settings action is clicked
+                    // Start PrefActivity when the settings action is clicked
                 Intent intent = new Intent(this, PrefActivity.class);
                 startActivity(intent);
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+//    private void simulateNetworkRequest() {
+//        // Handler to post results to the UI thread
+//        final Handler handler = new Handler(Looper.getMainLooper()) {
+//            @Override
+//            public void handleMessage(Message msg) {
+//                // This method is executed in the main thread
+//                String content = msg.getData().getString("server_response");
+//                Toast.makeText(WeatherActivity.this, content, Toast.LENGTH_SHORT).show();
+//            }
+//        };
+//
+//        // Worker thread to simulate network request
+//        Thread t = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    // Wait for 5 seconds to simulate a long network access
+//                    Thread.sleep(5000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//
+//                // Simulate server response
+//                Bundle bundle = new Bundle();
+//                bundle.putString("server_response", "Data refreshed successfully!");
+//
+//                // Notify the main thread
+//                Message msg = new Message();
+//                msg.setData(bundle);
+//                handler.sendMessage(msg);
+//            }
+//        });
+//
+//        // Start the thread
+//        t.start();
+//    }
+
+    // Define the AsyncTask for network simulation
+    private class SimulateNetworkTask extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Toast.makeText(WeatherActivity.this, "Starting refresh...", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            try {
+                // Simulate network delay
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return "Data refreshed successfully!";
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            Toast.makeText(WeatherActivity.this, result, Toast.LENGTH_SHORT).show();
         }
     }
 
