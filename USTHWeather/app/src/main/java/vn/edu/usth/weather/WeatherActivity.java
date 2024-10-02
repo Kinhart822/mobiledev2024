@@ -68,8 +68,6 @@ public class WeatherActivity extends AppCompatActivity {
 
         // Play the MP3 after extraction
         playMP3FromExternalStorage();
-
-        new DownloadLogoTask().execute();
     }
 
     @Override
@@ -163,7 +161,32 @@ public class WeatherActivity extends AppCompatActivity {
     }
 
     // Define the AsyncTask for network simulation
-    private class SimulateNetworkTask extends AsyncTask<Void, Void, String> {
+//    private class SimulateNetworkTask extends AsyncTask<Void, Void, String> {
+//
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//            Toast.makeText(WeatherActivity.this, "Starting refresh...", Toast.LENGTH_SHORT).show();
+//        }
+//
+//        @Override
+//        protected String doInBackground(Void... voids) {
+//            try {
+//                // Simulate network delay
+//                Thread.sleep(5000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//            return "Data refreshed successfully!";
+//        }
+//
+//        @Override
+//        protected void onPostExecute(String result) {
+//            Toast.makeText(WeatherActivity.this, result, Toast.LENGTH_SHORT).show();
+//        }
+//    }
+
+    private class SimulateNetworkTask extends AsyncTask<Void, Void, Bitmap> {
 
         @Override
         protected void onPreExecute() {
@@ -172,73 +195,44 @@ public class WeatherActivity extends AppCompatActivity {
         }
 
         @Override
-        protected String doInBackground(Void... voids) {
-            try {
-                // Simulate network delay
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return "Data refreshed successfully!";
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            Toast.makeText(WeatherActivity.this, result, Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private class DownloadLogoTask extends AsyncTask<Void, Void, Bitmap> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            Toast.makeText(WeatherActivity.this, "Downloading logo...", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
         protected Bitmap doInBackground(Void... voids) {
+            Bitmap bitmap = null;
             try {
-                // Initialize URL
-                URL url = new URL("https://usth.edu.vn/wp-content/uploads/2021/11/logo.png");
+                // Initialize URL for the USTH logo
+                URL url = new URL("http://ict.usth.edu.vn/wp-content/uploads/usth/usthlogo.png");
+
                 // Make a request to the server
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
                 connection.setDoInput(true);
                 connection.connect();
 
-                // Check the response code
+                // Receive response
                 int response = connection.getResponseCode();
                 Log.i("USTHWeather", "The response is: " + response);
 
-                if (response == HttpURLConnection.HTTP_OK) {
-                    // Process the image response
-                    InputStream inputStream = connection.getInputStream();
-                    return BitmapFactory.decodeStream(inputStream);
-                }
-
+                // Process image response
+                InputStream is = connection.getInputStream();
+                bitmap = BitmapFactory.decodeStream(is);
+                is.close();
             } catch (IOException e) {
-                Log.e(TAG, "Error downloading image", e);
+                Log.e(TAG, "Error downloading logo", e);
             }
-
-            return null;
+            return bitmap;
         }
 
         @Override
-        protected void onPostExecute(Bitmap result) {
-            if (result != null) {
-                // Find the ForecastFragment and update the ImageView
-                ForecastFragment fragment = (ForecastFragment) getSupportFragmentManager()
-                        .findFragmentById(R.id.fragment_forecast);
+        protected void onPostExecute(Bitmap bitmap) {
+            if (bitmap != null) {
+                // Assuming ForecastFragment is the active fragment
+                ForecastFragment fragment = (ForecastFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_forecast);
                 if (fragment != null) {
-                    ImageView logo = fragment.getView().findViewById(R.id.logo);
-                    logo.setImageBitmap(result);
+                    fragment.updateLogo(bitmap); // Update the logo in the fragment
                 }
+                Toast.makeText(WeatherActivity.this, "Data refreshed successfully!", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(WeatherActivity.this, "Failed to download logo", Toast.LENGTH_SHORT).show();
             }
         }
     }
-
-
 }

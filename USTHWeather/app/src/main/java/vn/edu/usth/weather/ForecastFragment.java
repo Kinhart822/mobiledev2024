@@ -1,6 +1,7 @@
 package vn.edu.usth.weather;
 
 import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -19,6 +20,7 @@ import android.widget.TextView;
  * create an instance of this fragment.
  */
 public class ForecastFragment extends Fragment {
+    private ImageView logo;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -63,11 +65,19 @@ public class ForecastFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_forecast, container, false);
-
         view.setBackgroundColor(Color.parseColor("#E3D7F7"));
 
+        // Initialize the ImageView
+        logo = view.findViewById(R.id.logo);
+
         return view;
+    }
+
+    public void updateLogo(Bitmap bitmap) {
+        // Update the ImageView with the downloaded bitmap
+        if (logo != null) {
+            logo.setImageBitmap(bitmap);
+        }
     }
 }
