@@ -2,6 +2,8 @@ package vn.edu.usth.weather;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +27,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import vn.edu.usth.weather.databinding.ActivityWeatherBinding;
 
@@ -63,6 +68,8 @@ public class WeatherActivity extends AppCompatActivity {
 
         // Play the MP3 after extraction
         playMP3FromExternalStorage();
+
+        new DownloadLogoTask().execute();
     }
 
     @Override
@@ -142,17 +149,11 @@ public class WeatherActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_refresh:
-                    // Show a toast when the refresh action is clicked
-    //         Toast.makeText(this, "Refreshing...", Toast.LENGTH_SHORT).show();
-
-                    // Simulate a network request using a thread and handler
-    //            simulateNetworkRequest();
-
-                    // Execute the AsyncTask
+                // Execute the AsyncTask
                 new SimulateNetworkTask().execute();
                 return true;
             case R.id.action_settings:
-                    // Start PrefActivity when the settings action is clicked
+                // Start PrefActivity when the settings action is clicked
                 Intent intent = new Intent(this, PrefActivity.class);
                 startActivity(intent);
                 return true;
@@ -160,43 +161,6 @@ public class WeatherActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-//    private void simulateNetworkRequest() {
-//        // Handler to post results to the UI thread
-//        final Handler handler = new Handler(Looper.getMainLooper()) {
-//            @Override
-//            public void handleMessage(Message msg) {
-//                // This method is executed in the main thread
-//                String content = msg.getData().getString("server_response");
-//                Toast.makeText(WeatherActivity.this, content, Toast.LENGTH_SHORT).show();
-//            }
-//        };
-//
-//        // Worker thread to simulate network request
-//        Thread t = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    // Wait for 5 seconds to simulate a long network access
-//                    Thread.sleep(5000);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//
-//                // Simulate server response
-//                Bundle bundle = new Bundle();
-//                bundle.putString("server_response", "Data refreshed successfully!");
-//
-//                // Notify the main thread
-//                Message msg = new Message();
-//                msg.setData(bundle);
-//                handler.sendMessage(msg);
-//            }
-//        });
-//
-//        // Start the thread
-//        t.start();
-//    }
 
     // Define the AsyncTask for network simulation
     private class SimulateNetworkTask extends AsyncTask<Void, Void, String> {
@@ -223,5 +187,58 @@ public class WeatherActivity extends AppCompatActivity {
             Toast.makeText(WeatherActivity.this, result, Toast.LENGTH_SHORT).show();
         }
     }
+
+    private class DownloadLogoTask extends AsyncTask<Void, Void, Bitmap> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Toast.makeText(WeatherActivity.this, "Downloading logo...", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        protected Bitmap doInBackground(Void... voids) {
+            try {
+                // Initialize URL
+                URL url = new URL("https://usth.edu.vn/wp-content/uploads/2021/11/logo.png");
+                // Make a request to the server
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setDoInput(true);
+                connection.connect();
+
+                // Check the response code
+                int response = connection.getResponseCode();
+                Log.i("USTHWeather", "The response is: " + response);
+
+                if (response == HttpURLConnection.HTTP_OK) {
+                    // Process the image response
+                    InputStream inputStream = connection.getInputStream();
+                    return BitmapFactory.decodeStream(inputStream);
+                }
+
+            } catch (IOException e) {
+                Log.e(TAG, "Error downloading image", e);
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            if (result != null) {
+                // Find the ForecastFragment and update the ImageView
+                ForecastFragment fragment = (ForecastFragment) getSupportFragmentManager()
+                        .findFragmentById(R.id.fragment_forecast);
+                if (fragment != null) {
+                    ImageView logo = fragment.getView().findViewById(R.id.logo);
+                    logo.setImageBitmap(result);
+                }
+            } else {
+                Toast.makeText(WeatherActivity.this, "Failed to download logo", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 
 }
